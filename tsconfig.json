@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    /* Target & Environment */
+    "target": "ES2022" /* Specify ECMAScript target version */,
+    "module": "ESNext" /* Use modern ESM import/export syntax */,
+    "moduleResolution": "Bundler" /* Allows extensionless imports (e.g., './cpay/cpay.router') */,
+    "lib": [
+      "ES2022"
+    ] /* Only include Node-appropriate global types (no 'dom') */,
+    "types": ["node"] /* Include type definitions for Node.js */,
+
+    /* File Layout */
+    "baseUrl": "." /* Base directory to resolve non-relative module names */,
+    "rootDir": "./src" /* Specify the root folder of input files */,
+    "outDir": "./dist" /* Redirect output structure to the directory */,
+
+    /* Strict Type-Checking Options */
+    "strict": true /* Enable all strict type-checking options */,
+    "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type */,
+    "strictNullChecks": true /* When type checking, take into account 'null' and 'undefined' */,
+    "strictFunctionTypes": true /* When assigning functions, check to ensure parameters and return values are subtype-compatible */,
+    "noImplicitThis": true /* Enable error reporting when 'this' is given the type 'any' */,
+    "alwaysStrict": true /* Ensure 'use strict' is always emitted */,
+
+    /* Additional Checks (Highly Recommended) */
+    "noUnusedLocals": true /* Report errors on unused local variables */,
+    "noUnusedParameters": true /* Report errors on unused parameters */,
+    "noImplicitReturns": true /* Report error when not all code paths in a function return a value */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement */,
+    "noUncheckedIndexedAccess": true /* Include 'undefined' in index signature results */,
+    "exactOptionalPropertyTypes": true /* Interpret optional property types exactly as written rather than adding 'undefined' */,
+
+    /* Module Resolution & Interop */
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports */,
+    "isolatedModules": true /* Ensure that each file can be safely transpiled without relying on other imports */,
+
+    /* Source Maps & Declarations */
+    "sourceMap": true /* Create source map files for emitted JavaScript files */,
+    "declaration": true /* Generate .d.ts files for your types */,
+    "declarationMap": true /* Create sourcemaps for d.ts files */,
+
+    /* Path Aliases */
+    "paths": {
+      "@/*": [
+        "src/*"
+      ] /* Allows importing from '@/common/...' instead of deep relative paths */
+    },
+    "ignoreDeprecations": "6.0",
+    /* Performance & Style */
+    "skipLibCheck": true /* Skip type checking of declaration files (massive speed boost) */,
+    "jsx": "react-jsx" /* Included based on your previous config, just in case you use JSX elements */
+  },
+  "include": ["src/**/*","env.d.ts"],
+  "exclude": ["node_modules", "dist", "trash"]
+}
