@@ -146,3 +146,6 @@ vite.config.ts.timestamp-*
 .env
 .env.production
 .env.development
+sample-data.md
+trash/
+/trash

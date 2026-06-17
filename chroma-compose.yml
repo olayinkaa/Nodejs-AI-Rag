@@ -1,0 +1,18 @@
+services:
+  server:
+    image: chromadb/chroma
+    volumes:
+      - chroma_data:/data
+    ports:
+      - "8000:8000"
+
+  # THIS IMAGE IS GUARANTEED PUBLIC ON DOCKER HUB
+  visualizer:
+    image: fengzhichao/chromadb-admin:latest
+    ports:
+      - "8001:3001" # Maps container port 3001 to your browser at http://localhost:8001
+    depends_on:
+      - server
+
+volumes:
+  chroma_data:
