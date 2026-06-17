@@ -13,6 +13,7 @@ export class ChromaService {
     model: "llama3.2:latest",
     temperature: 0.1,
   });
+  
   static async getAllDocuments() {
     try {
       const nativeCollection = await getOrCreateCollection();
