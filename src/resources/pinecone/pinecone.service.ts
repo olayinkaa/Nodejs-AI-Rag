@@ -156,7 +156,7 @@ export class PineconeService {
     fileBuffer: Buffer,
     originalName: string,
   ): Promise<{ message: string; chunkCount: number }> {
-    console.log(`📥 Processing uploaded file buffer for: ${originalName}...`);
+    console.log(`Processing uploaded file buffer for: ${originalName}...`);
 
     // 1. Load the PDF directly from the in-memory buffer using a Web Blob wrapper
     const uint8ArrayData = new Uint8Array(fileBuffer);
@@ -174,7 +174,7 @@ export class PineconeService {
       metadata: { source: originalName },
     };
 
-    console.log("✂️ Splitting document text into clean segments...");
+    console.log("Splitting document text into clean segments...");
     const splitter = new RecursiveCharacterTextSplitter({
       separators: ["\n\n", "\n", ". ", " ", ""],
       chunkSize: 800,
@@ -197,16 +197,16 @@ export class PineconeService {
       .replace(/[^a-zA-Z0-9]/g, "_")
       .toLowerCase();
 
-    console.log("🚀 Generating deterministic vector IDs...");
+    console.log("Generating deterministic vector IDs...");
     const ids = splittedDocs.map(
       (_, index) => `pdf_${cleanFileName}_chunk_${index}`,
     );
 
-    console.log("🧠 Connecting to safe Pinecone runtime context wrapper...");
+    console.log("Connecting to safe Pinecone runtime context wrapper...");
     const vectorStore = await getPineconeVectorStore();
 
     console.log(
-      "📡 Streaming embeddings pipeline execution into cloud instance...",
+      "Streaming embeddings pipeline execution into cloud instance...",
     );
     await vectorStore.addDocuments(splittedDocs, { ids });
 

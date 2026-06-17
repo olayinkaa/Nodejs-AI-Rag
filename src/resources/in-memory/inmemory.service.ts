@@ -9,7 +9,7 @@ import { PuppeteerWebBaseLoader } from "@langchain/community/document_loaders/we
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 
-export class LangChainService {
+export class InMemoryService {
   private static llm = new ChatOllama({
     baseUrl: "http://localhost:11434", // Default Ollama local endpoint
     model: "llama3.2:latest",
@@ -53,11 +53,12 @@ export class LangChainService {
     const stream = await pipeline.stream({ input: userInput });
     return stream;
   }
+
   /**
    *
    */
   static async executeWebLoader(userInput: string): Promise<string> {
-    console.log("Loading webpage content...");
+    console.log("📥 Loading webpage content...");
     // const loader = new CheerioWebBaseLoader("https://etranzact.com/#/business");
     const loader = new PuppeteerWebBaseLoader(
       "https://etranzact.com/#/business",
@@ -73,10 +74,9 @@ export class LangChainService {
         },
       },
     );
-
     const docs = await loader.load();
 
-    console.log("Splitting documents into pieces...");
+    console.log("✂️ Splitting documents into pieces...");
 
     const splitter = new RecursiveCharacterTextSplitter({
       chunkSize: 500, // Increased slightly so context has actual substance
@@ -86,7 +86,7 @@ export class LangChainService {
     const splittedDocs = await splitter.splitDocuments(docs);
     console.log(splittedDocs);
 
-    console.log("Generating embeddings and saving to RAM store...");
+    console.log("🧠 Generating embeddings and saving to RAM store...");
     const vectorStore = new MemoryVectorStore(this.embeddings);
     await vectorStore.addDocuments(splittedDocs);
 
@@ -120,7 +120,6 @@ export class LangChainService {
   }
 
   /**
-   *
    *
    */
   static async executePDFLoader(userInput: string): Promise<string> {
