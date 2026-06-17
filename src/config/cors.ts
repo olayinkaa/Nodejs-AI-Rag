@@ -1,7 +1,5 @@
-// src/config/cors.ts
 import { CorsOptions } from "cors";
 
-// Define your allowed domains array here
 const allowedOrigins = [
   "http://localhost:3001",
   "http://localhost:6543",
