@@ -1,6 +1,5 @@
 # Nodejs AI Retrieval Augmented Generational
 
-
 # Tech Stack
 - Nodejs
 - Express Js

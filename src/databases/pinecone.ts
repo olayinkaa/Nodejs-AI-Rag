@@ -1,14 +1,6 @@
 // src/databases/pinecone.ts
 import { Pinecone as PineconeClient } from "@pinecone-database/pinecone";
 import { PineconeStore, PineconeEmbeddings } from "@langchain/pinecone";
-// import { OllamaEmbeddings } from "@langchain/ollama";
-
-// Keep the embeddings setup at top-level; it doesn't validate env keys instantly
-// export const ollamaEmbeddings = new OllamaEmbeddings({
-//   baseUrl: "http://localhost:11434",
-//   model: "nomic-embed-text:v1.5",
-//   dimensions: 1024,
-// });
 
 const embeddings = new PineconeEmbeddings({
   apiKey: process.env.PINECONE_API_KEY,
@@ -21,9 +13,6 @@ const embeddings = new PineconeEmbeddings({
 export async function getPineconeVectorStore(): Promise<PineconeStore> {
   const apiKey = process.env.PINECONE_API_KEY;
   const indexName = process.env.PINECONE_INDEX;
-  // const apiKey =
-  //   "pcsk_5hkvFN_7YxyaH4yu43phJAxNAUNcnAAMt7xmpwm6FXRdMnxzT7vdyqM4ss7EMSX7zskFYN";
-  // const indexName = "cpay-rag-pinecone-index";
 
   // 1. Strictly validate environment state variables at the execution layer
   if (!apiKey) {
