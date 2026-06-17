@@ -34,7 +34,7 @@ export default {
         ...result,
       });
     } catch (error: any) {
-      console.error("💥 Error during dynamic file pipeline processing:", error);
+      console.error("Error during dynamic file pipeline processing:", error);
       return res.status(500).json({ success: false, error: error.message });
     }
   },
