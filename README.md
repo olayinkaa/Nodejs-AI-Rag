@@ -11,3 +11,10 @@
 ## ⚙️ Prerequisites
 - [Node.js](https://nodejs.org/) (v20+)
 - [pnpm](https://pnpm.io/)
+
+# ⚙️ Installation & Setup
+- Clone the Repository
+```sh
+git clone https://github.com/olayinkaa/Nodejs-AI-Rag.git
+cd Nodejs-AI-Rag
+```
